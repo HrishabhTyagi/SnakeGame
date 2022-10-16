@@ -16,7 +16,7 @@ food = { x: 6, y: 7 };
 
 // Game Functions
 function main(ctime) {
-  //  window.requestAnimationFrame(main);
+    window.requestAnimationFrame(main);
     if ((ctime - lastPaintTime) / 1000 < 1 / speed) {
         return;
     }
@@ -95,7 +95,7 @@ function gameEngine() {
 
     //Display the food
     foodElement = document.createElement('img');
-    foodElement.src = "frog.png";
+    foodElement.src = "/frog.png";
     foodElement.height = 50;
     foodElement.width = 50;
     foodElement.style.gridRowStart = food.y;
