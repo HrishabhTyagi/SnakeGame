@@ -96,6 +96,7 @@ function gameEngine() {
     //Display the food
     foodElement = document.createElement('img');
     foodElement.src = "/frog.png";
+    foodElement.alt = "Frog Image";
     foodElement.height = 50;
     foodElement.width = 50;
     foodElement.style.gridRowStart = food.y;
