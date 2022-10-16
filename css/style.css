@@ -24,14 +24,18 @@
 
 .head{
     background: linear-gradient(red, yellow);
-    border-radius: 8px;
+    border-radius: 15px;
     border : 2px solid purple;
 }
 
 .snake{
     background-color: purple;
     border: .25vmin solid white;
-    border-radius: 15px;
+    border-radius: 25px;
+    width: 40px;
+    background-image: url("../frog.png");
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 #scoreboard{
