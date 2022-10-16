@@ -26,14 +26,17 @@ function main(ctime) {
 
 }
 
-function isCollide(sarr) {
+function isCollide(snake) {
     // If snake bump into itself
     for (let i = 1; i < snakeArr.length; i++) {
         if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) {
             return true;
         }
-        
     }
+
+    // If you bump into the wall
+    if (snake[0].x >= 18 || snake[0].x <= 0 || snake[0].y >= 18 || snake[0].y <= 0)
+        return true;
 }
 
 function gameEngine() {
@@ -46,11 +49,20 @@ function gameEngine() {
         snakeArr = [{ x: 13, y: 15 }];
         musicSound.play();
         score = 0;
+        scoreboard.innerHTML = "Score :0";
     }
 
     // If you have eaten the food, increment the score and regenrate the food
     if (snakeArr[0].y === food.y && snakeArr[0].x === food.x) {
         foodSound.play();
+        score += 1;
+        if(score > parseInt(hiscore))
+        {
+            hiscore = score;
+            localStorage.setItem("hiscore",hiscore.toString());
+            hiscoreBox.innerHTML = "Hi Score: "+hiscore;
+        }
+        scoreboard.innerHTML = "Score :" + score;
         snakeArr.unshift({ x: snakeArr[0].x + inputDir.x, y: snakeArr[0].y + inputDir.y });
         let a = 2;
         let b = 16;
@@ -82,14 +94,26 @@ function gameEngine() {
     })
 
     //Display the food
-    foodElement = document.createElement('div');
+    foodElement = document.createElement('img');
+    foodElement.src = "../frog.png";
+    foodElement.height = 50;
+    foodElement.width = 50;
     foodElement.style.gridRowStart = food.y;
     foodElement.style.gridColumnStart = food.x;
-    foodElement.classList.add('food');
     board.appendChild(foodElement);
 }
 
 // Main logic starts here
+let hiscore = localStorage.getItem("hiscore");
+
+if (hiscore === null){
+    localStorage.setItem("hiscore", "0");
+}
+else{
+    hiscoreBox.innerHTML = "Hi Score: "+ hiscore;
+    localStorage.setItem("hiscore",hiscore);
+}
+
 window.requestAnimationFrame(main);
 window.addEventListener('keydown', e => {
     inputDir = { x: 0, y: 1 } //start the game

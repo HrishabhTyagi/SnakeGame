@@ -23,13 +23,31 @@
 }
 
 .head{
-    background-color: red;
+    background: linear-gradient(red, yellow);
+    border-radius: 8px;
+    border : 2px solid purple;
 }
 
 .snake{
     background-color: purple;
+    border: .25vmin solid white;
+    border-radius: 15px;
 }
 
-.food{
-    background-color: yellow;
+#scoreboard{
+    position: absolute;
+    top : 9px;
+    right: 200px;
+    font-size: 39px;
+    font-weight: bold;
+    color: white;
+}
+
+#hiscoreBox{
+    position: absolute;
+    top : 50px;
+    right: 153px;
+    font-size: 39px;
+    font-weight: bold;
+    color: white;
 }
